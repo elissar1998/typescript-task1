@@ -22,6 +22,11 @@ var AddressBook = /** @class */ (function () {
             throw new Error("Name cannot be empty");
         }
         // You can add further validations for phone number format, etc.
+        // The regular expression used in this function is designed to match phone numbers in the following format: (XXX) XXX-XXXX or XXX-XXX-XXXX.
+        var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        if (!phoneRegex.test(contact.phone)) {
+            throw new Error("Invalid Number format");
+        }
         this.contacts.push(contact);
     };
     AddressBook.prototype.findContactByName = function (name) {
@@ -55,7 +60,7 @@ var AddressBook = /** @class */ (function () {
 }());
 var addressBook = new AddressBook();
 var contact1 = new Contact("John Doe", "johndoe@example.com", "123-456-7890");
-var contact2 = new Contact("Alice Smith", "alice.smith@invalid", "456-789-0123"); // Invalid email
+var contact2 = new Contact("Alice Smith", "alice.smith@invalid", "(123) 456-7890"); // Invalid email
 var contact3 = new Contact("", "valid@email.com", "789-012-3456"); // Empty name
 addressBook.addContact(contact1);
 try {

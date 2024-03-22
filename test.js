@@ -1,5 +1,6 @@
 var Contact = /** @class */ (function () {
     function Contact(name, email, phone, group) {
+        if (group === void 0) { group = " "; }
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -53,9 +54,9 @@ var AddressBook = /** @class */ (function () {
     return AddressBook;
 }());
 var addressBook = new AddressBook();
-var contact1 = new Contact("John Doe", "johndoe@example.com", "123-456-7890", "group1");
-var contact2 = new Contact("Alice Smith", "alice.smith@invalid", "456-789-0123", "group3"); // Invalid email
-var contact3 = new Contact("", "valid@email.com", "789-012-3456", "group9"); // Empty name
+var contact1 = new Contact("John Doe", "johndoe@example.com", "123-456-7890");
+var contact2 = new Contact("Alice Smith", "alice.smith@invalid", "456-789-0123"); // Invalid email
+var contact3 = new Contact("", "valid@email.com", "789-012-3456"); // Empty name
 addressBook.addContact(contact1);
 try {
     addressBook.addContact(contact2); // This will throw an error (invalid email)

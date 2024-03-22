@@ -4,7 +4,7 @@ class Contact {
   phone: string;
   group: string;
 
-  constructor(name: string, email: string, phone: string, group: string) {
+  constructor(name: string, email: string, phone: string, group: string = " ") {
     this.name = name;
     this.email = email;
     this.phone = phone;
@@ -65,19 +65,13 @@ class AddressBook {
 
 const addressBook = new AddressBook();
 
-const contact1 = new Contact(
-  "John Doe",
-  "johndoe@example.com",
-  "123-456-7890",
-  "group1"
-);
+const contact1 = new Contact("John Doe", "johndoe@example.com", "123-456-7890");
 const contact2 = new Contact(
   "Alice Smith",
   "alice.smith@invalid",
-  "456-789-0123",
-  "group3"
+  "456-789-0123"
 ); // Invalid email
-const contact3 = new Contact("", "valid@email.com", "789-012-3456", "group9"); // Empty name
+const contact3 = new Contact("", "valid@email.com", "789-012-3456"); // Empty name
 
 addressBook.addContact(contact1);
 
